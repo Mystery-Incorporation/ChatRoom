@@ -24,5 +24,24 @@ namespace ChatRoom
         {
             InitializeComponent();
         }
+
+        private void ListActiveChats_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+        private void ViewList_Click_ViewHide(object sender, RoutedEventArgs e)
+        {
+            if (listActiveChats.Visibility == Visibility.Hidden)
+            {   
+                listActiveChats.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                listActiveChats.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
