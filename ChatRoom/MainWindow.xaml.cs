@@ -24,5 +24,10 @@ namespace ChatRoom
         {
             InitializeComponent();
         }
+
+        private void Extra_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
