@@ -27,6 +27,21 @@ namespace ChatRoom
 
         private void Extra_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+
+       
+        private void ViewList_Click_ViewHide(object sender, RoutedEventArgs e)
+        {
+            if (listActiveChats.Visibility == Visibility.Hidden)
+            {   
+                listActiveChats.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                listActiveChats.Visibility = Visibility.Hidden;
+            }
 
         }
     }
