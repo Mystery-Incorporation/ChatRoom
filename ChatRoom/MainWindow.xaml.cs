@@ -44,5 +44,10 @@ namespace ChatRoom
             }
 
         }
+
+        private void listActiveChats_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

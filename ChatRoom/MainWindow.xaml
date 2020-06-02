@@ -1,37 +1,25 @@
 ﻿<Window x:Class="ChatRoom.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ChatRoom"
-          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Chat Room" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
-        <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"--> 
-        <!--fw:AcrylicWindow.Enabled="True"--> 
         mc:Ignorable="d"
+        Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
+    <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+    <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
+    <!--fw:AcrylicWindow.Enabled="True"-->
 
-        <!--Title="Chat Room" Height="728" Width="1366" WindowStartupLocation="CenterScreen"-->
->
+    <!--Title="Chat Room" Height="728" Width="1366" WindowStartupLocation="CenterScreen"-->
+
     <Grid>
-       <Grid.Background>
+        <Grid.Background>
             <ImageBrush ImageSource="/assets/PlaceHolderBackground.jpeg" ></ImageBrush>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="1049" VerticalAlignment="Top" Width="142" Background="Orange">
-            <Button x:Name="profile" Content="Profile" Height="91" Margin="0,10,0,949"/>
-            <Button x:Name="directMessages" Content="Direct Messages"  Width="142" Margin="0,129,0,831" Height="90"/>
-            <Button x:Name="groupChat" Content="Group Chat" Height="93" Margin="0,242,0,715"/>
-            <Button x:Name="viewList" Background="red" Margin="120,497,0,0" VerticalAlignment="Top" Height="61" Click="ViewList_Click_ViewHide" />
-        </Grid>
+        <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange"></Grid>
         
-        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="1049" Margin="142,0,0,0" VerticalAlignment="Top" Width="322" Visibility="Visible" Background="#FFE2A142" OpacityMask="#FFE2A142" BorderBrush="#FFE2A142" Foreground="#FFE2A142" >
-            
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="466" VerticalAlignment="Top" Width="500" Margin="770,79,0,0" RadiusX="10" RadiusY="10" Stroke="#FFCDCDCD" StrokeStartLineCap="Round">
+
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="647" VerticalAlignment="Top" Width="748" Margin="520,45,0,0" RadiusX="10" RadiusY="10" Stroke="#FFCDCDCD" StrokeStartLineCap="Round">
 
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,-0.1">
@@ -40,11 +28,11 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1191,549,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1193,602,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
             </Button.Effect>
-            <Image Source="/assets/arrow.png" Height="50" Width="50">
+            <Image Source="/assets/arrow.png" Height="42" Width="50">
                 <Image.Effect>
                     <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
                 </Image.Effect>
@@ -56,7 +44,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1112,549,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1112,602,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
             <Button.Effect>
                 <DropShadowEffect ShadowDepth="4" Direction="310" Opacity="0.5" BlurRadius="4"/>
             </Button.Effect>
@@ -72,7 +60,7 @@
                 </Image.Effect>
             </Image>
         </Button>
-        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="60" Margin="772,549,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="335" FontSize="15" Foreground="#FF8F8F8F">
+        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="560,572,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="515" FontSize="15" Foreground="#FF8F8F8F">
             <TextBox.Effect>
                 <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
             </TextBox.Effect>
@@ -82,6 +70,15 @@
                     <GradientStop Color="#FFF0F0F0" Offset="1"/>
                 </LinearGradientBrush>
             </TextBox.Background>
-        </TextBox>      
+        </TextBox>
+        <Button x:Name="profile" Content="Profile" HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0" VerticalAlignment="Bottom" Width="322" Visibility="Visible" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
