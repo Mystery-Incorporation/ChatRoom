@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatRoom"
-        mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Chat Room" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
         <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"--> 
         <!--fw:AcrylicWindow.Enabled="True"--> 
+        mc:Ignorable="d"
 
-
+        <!--Title="Chat Room" Height="728" Width="1366" WindowStartupLocation="CenterScreen"-->
+>
     <Grid>
-        <Grid.Background>
+       <Grid.Background>
             <ImageBrush ImageSource="/assets/PlaceHolderBackground.jpeg" ></ImageBrush>
         </Grid.Background>
         <Grid HorizontalAlignment="Left" Height="1049" VerticalAlignment="Top" Width="142" Background="Orange">
@@ -30,6 +31,57 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="466" VerticalAlignment="Top" Width="500" Margin="770,79,0,0" RadiusX="10" RadiusY="10" Stroke="#FFCDCDCD" StrokeStartLineCap="Round">
 
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,-0.1">
+                    <GradientStop Color="Orange" Offset="-0.2"/>
+                    <GradientStop Color="White" Offset="1.2"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1191,549,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
+            </Button.Effect>
+            <Image Source="/assets/arrow.png" Height="50" Width="50">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
+                </Image.Effect>
+            </Image>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFE4E1E1" Offset="0.832"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1112,549,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="4" Direction="310" Opacity="0.5" BlurRadius="4"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFE4E1E1" Offset="0.832"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Image Source="/assets/purpleplus.png" Width="40" Height="40">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
+                </Image.Effect>
+            </Image>
+        </Button>
+        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="60" Margin="772,549,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="335" FontSize="15" Foreground="#FF8F8F8F">
+            <TextBox.Effect>
+                <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFF0F0F0" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>      
     </Grid>
 </Window>

@@ -25,6 +25,11 @@ namespace ChatRoom
             InitializeComponent();
         }
 
+        private void Extra_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+
        
         private void ViewList_Click_ViewHide(object sender, RoutedEventArgs e)
         {
@@ -37,6 +42,7 @@ namespace ChatRoom
             {
                 listActiveChats.Visibility = Visibility.Hidden;
             }
+
         }
     }
 }
