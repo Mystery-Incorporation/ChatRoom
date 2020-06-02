@@ -21,7 +21,7 @@
             <Button.Effect>
                 <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
             </Button.Effect>
-            <Image Source="C:\Users\Dator 10\Desktop\arrow.png" Height="50" Width="50">
+            <Image Source="/assets/arrow.png" Height="50" Width="50">
                 <Image.Effect>
                     <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
                 </Image.Effect>
@@ -43,7 +43,7 @@
                     <GradientStop Color="#FFE4E1E1" Offset="0.832"/>
                 </LinearGradientBrush>
             </Button.Background>
-            <Image Source="C:\Users\Dator 10\Desktop\purpleplus.png" Width="40" Height="40">
+            <Image Source="/assets/purpleplus.png" Width="40" Height="40">
                 <Image.Effect>
                     <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
                 </Image.Effect>
