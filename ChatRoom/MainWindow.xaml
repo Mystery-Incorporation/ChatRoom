@@ -4,11 +4,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ChatRoom"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        fw:AcrylicWindow.Enabled="True"
         mc:Ignorable="d"
         Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
+        <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+        <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
+        <!--fw:AcrylicWindow.Enabled="True"-->
     
 
     <Grid>
@@ -17,8 +17,8 @@
         </Grid.Background>
         <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange">
             <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
-            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,104,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
-            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,196,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
+            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,104,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="DirectMessages_Click"/>
+            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,196,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="GroupChat_Click"/>
             <Button x:Name="viewChats" HorizontalAlignment="Right" Margin="0,320,0,317" VerticalAlignment="Center" Width="20" Height="88" Click="viewChats_Click"/>
 
         </Grid>
@@ -83,12 +83,17 @@
         </TextBox>
 
 
-        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0" VerticalAlignment="Bottom" Width="322" Visibility="Visible" >
+        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0.4" VerticalAlignment="Bottom" Width="322" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" BorderBrush="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="ListView">
+                    <Setter Property="Background" Value="#FFFFC559"/>
+                </Style>
+            </ListView.Resources>
         </ListView>
     </Grid>
 </Window>

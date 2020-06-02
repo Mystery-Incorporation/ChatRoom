@@ -20,6 +20,9 @@ namespace ChatRoom
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> contacts = new List<string>() { "Anna", "Johan", "Sara", "Bertil" };
+        private List<string> groups = new List<string>() { "The first group", "Amazing Group", "Fantastic Group", "The AmazeBallz" };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace ChatRoom
 
         private void Extra_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
 
@@ -41,6 +45,24 @@ namespace ChatRoom
             else
             {
                 listActiveChats.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void DirectMessages_Click(object sender, RoutedEventArgs e)
+        {
+            listActiveChats.Items.Clear();
+            foreach(string contact in contacts)
+            {
+                listActiveChats.Items.Add(contact);
+            }
+        }
+
+        private void GroupChat_Click(object sender, RoutedEventArgs e)
+        {
+            listActiveChats.Items.Clear();
+            foreach(string group in groups)
+            {
+                listActiveChats.Items.Add(group);
             }
         }
     }
