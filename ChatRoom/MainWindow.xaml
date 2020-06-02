@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatRoom"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920">
-    <Grid Background="Beige">
-        <Grid HorizontalAlignment="Left" Height="1050" VerticalAlignment="Top" Width="142" Background="Orange">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Chat Room" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
+        <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"--> 
+        <!--fw:AcrylicWindow.Enabled="True"--> 
+
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/assets/PlaceHolderBackground.jpeg" ></ImageBrush>
+        </Grid.Background>
+        <Grid HorizontalAlignment="Left" Height="1049" VerticalAlignment="Top" Width="142" Background="Orange">
             <Button x:Name="profile" Content="Profile" Height="91" Margin="0,10,0,949"/>
             <Button x:Name="directMessages" Content="Direct Messages"  Width="142" Margin="0,129,0,831" Height="90"/>
             <Button x:Name="groupChat" Content="Group Chat" Height="93" Margin="0,242,0,715"/>
-            <Button x:Name="viewList" Background="Red" Margin="120,497,0,0" VerticalAlignment="Top" Height="61" Click="ViewList_Click_ViewHide"/>
+            <Button x:Name="viewList" Background="red" Margin="120,497,0,0" VerticalAlignment="Top" Height="61" Click="ViewList_Click_ViewHide" />
         </Grid>
-        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="1050" Margin="142,0,0,0" VerticalAlignment="Top" Width="322" Visibility="Hidden">
+        
+        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="1049" Margin="142,0,0,0" VerticalAlignment="Top" Width="322" Visibility="Visible" Background="#FFE2A142" OpacityMask="#FFE2A142" BorderBrush="#FFE2A142" Foreground="#FFE2A142" >
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
