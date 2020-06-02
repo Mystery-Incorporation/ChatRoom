@@ -4,31 +4,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ChatRoom"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        fw:AcrylicWindow.Enabled="True"
         mc:Ignorable="d"
         Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
-    <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
-    <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
-    <!--fw:AcrylicWindow.Enabled="True"-->
-
-    <!--Title="Chat Room" Height="728" Width="1366" WindowStartupLocation="CenterScreen"-->
+    
 
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/assets/PlaceHolderBackground.jpeg" ></ImageBrush>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange"></Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange">
+            <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
+            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,104,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
+            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,196,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
+            <Button x:Name="viewChats" HorizontalAlignment="Right" Margin="0,320,0,317" VerticalAlignment="Center" Width="20" Height="88" Click="viewChats_Click"/>
 
-        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="647" VerticalAlignment="Top" Width="748" Margin="520,45,0,0" RadiusX="10" RadiusY="10" Stroke="#FFCDCDCD" StrokeStartLineCap="Round">
+        </Grid>
+
+
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="680" VerticalAlignment="Top" Width="845" Margin="489,28,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
+            <Rectangle.Effect>
+                <BlurEffect Radius="10" RenderingBias="Quality"/>
+            </Rectangle.Effect>
 
             <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,-0.1">
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="Orange" Offset="-0.2"/>
                     <GradientStop Color="White" Offset="1.2"/>
+                    <GradientStop Color="#FFFFB93B" Offset="0.153"/>
+                    <GradientStop Color="#FFF3C87D" Offset="0.992"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1193,602,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1192,603,0,0" VerticalAlignment="Top" Width="76" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
             </Button.Effect>
@@ -44,7 +54,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1112,602,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1093,603,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
             <Button.Effect>
                 <DropShadowEffect ShadowDepth="4" Direction="310" Opacity="0.5" BlurRadius="4"/>
             </Button.Effect>
@@ -60,7 +70,7 @@
                 </Image.Effect>
             </Image>
         </Button>
-        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="560,572,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="515" FontSize="15" Foreground="#FF8F8F8F">
+        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="552,588,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="516" FontSize="15" Foreground="#FF8F8F8F">
             <TextBox.Effect>
                 <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
             </TextBox.Effect>
@@ -71,7 +81,7 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <Button x:Name="profile" Content="Profile" HorizontalAlignment="Left" Margin="28,45,0,0" VerticalAlignment="Top" Width="75"/>
+
 
         <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0" VerticalAlignment="Bottom" Width="322" Visibility="Visible" >
             <ListView.View>

@@ -30,11 +30,11 @@ namespace ChatRoom
         }
 
 
-       
-        private void ViewList_Click_ViewHide(object sender, RoutedEventArgs e)
+
+        private void viewChats_Click(object sender, RoutedEventArgs e)
         {
             if (listActiveChats.Visibility == Visibility.Hidden)
-            {   
+            {
                 listActiveChats.Visibility = Visibility.Visible;
 
             }
@@ -42,12 +42,6 @@ namespace ChatRoom
             {
                 listActiveChats.Visibility = Visibility.Hidden;
             }
-
-        }
-
-        private void listActiveChats_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
