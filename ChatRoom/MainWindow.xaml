@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:ChatRoom"
         mc:Ignorable="d"
         Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
-        <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
-        <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
-        <!--fw:AcrylicWindow.Enabled="True"-->
-    
+    <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+    <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
+    <!--fw:AcrylicWindow.Enabled="True"-->
+
 
     <Grid>
         <Grid.Background>
@@ -24,7 +24,7 @@
         </Grid>
 
 
-        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="680" VerticalAlignment="Top" Width="845" Margin="489,28,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="683" VerticalAlignment="Top" Width="845" Margin="489,25,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
             <Rectangle.Effect>
                 <BlurEffect Radius="10" RenderingBias="Quality"/>
             </Rectangle.Effect>
@@ -70,7 +70,7 @@
                 </Image.Effect>
             </Image>
         </Button>
-        <TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="552,588,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="516" FontSize="15" Foreground="#FF8F8F8F">
+        <!--<TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="552,588,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="516" FontSize="15" Foreground="#FF8F8F8F">
             <TextBox.Effect>
                 <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
             </TextBox.Effect>
@@ -80,7 +80,7 @@
                     <GradientStop Color="#FFF0F0F0" Offset="1"/>
                 </LinearGradientBrush>
             </TextBox.Background>
-        </TextBox>
+        </TextBox>-->
 
 
         <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0.4" VerticalAlignment="Bottom" Width="322" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" BorderBrush="{x:Null}">
@@ -95,5 +95,25 @@
                 </Style>
             </ListView.Resources>
         </ListView>
+        <Grid HorizontalAlignment="Left" Height="118" Margin="552,560,0,0" VerticalAlignment="Top" Width="716">
+                
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Margin="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Opacity="0.9">
+                
+            <TextBox.Effect>
+                <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7BF7A" Offset="0"/>
+                    <GradientStop Color="#FFF9F6B9" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+            </TextBox>
+        </Grid>
     </Grid>
 </Window>
