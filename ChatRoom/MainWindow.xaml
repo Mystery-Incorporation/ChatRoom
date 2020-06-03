@@ -1,12 +1,119 @@
 ﻿<Window x:Class="ChatRoom.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ChatRoom"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
+    <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+    <!--xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"-->
+    <!--fw:AcrylicWindow.Enabled="True"-->
+
+
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/assets/PlaceHolderBackground.jpeg" ></ImageBrush>
+        </Grid.Background>
+        <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange">
+            <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="86" Height="70"/>
+            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,104,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="DirectMessages_Click"/>
+            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,196,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="GroupChat_Click"/>
+            <Button x:Name="viewChats" HorizontalAlignment="Right" Margin="0,320,0,317" VerticalAlignment="Center" Width="20" Height="88" Click="viewChats_Click"/>
+
+        </Grid>
+
+
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="683" VerticalAlignment="Top" Width="845" Margin="489,25,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
+            <Rectangle.Effect>
+                <BlurEffect Radius="10" RenderingBias="Quality"/>
+            </Rectangle.Effect>
+
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="-0.2"/>
+                    <GradientStop Color="White" Offset="1.2"/>
+                    <GradientStop Color="#FFFFB93B" Offset="0.153"/>
+                    <GradientStop Color="#FFF3C87D" Offset="0.992"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1192,603,0,0" VerticalAlignment="Top" Width="76" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
+            </Button.Effect>
+            <Image Source="/assets/arrow.png" Height="42" Width="50">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
+                </Image.Effect>
+            </Image>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFE4E1E1" Offset="0.832"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Extra" HorizontalAlignment="Left" Margin="1093,603,0,0" VerticalAlignment="Top" Width="75" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="4" Direction="310" Opacity="0.5" BlurRadius="4"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFE4E1E1" Offset="0.832"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Image Source="/assets/purpleplus.png" Width="40" Height="40">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="2" Direction="290" ShadowDepth="3"/>
+                </Image.Effect>
+            </Image>
+        </Button>
+        <!--<TextBox x:Name="chattext" HorizontalAlignment="Left" Height="90" Margin="552,588,0,0" TextWrapping="Wrap" Text="Type your message here..." VerticalAlignment="Top" Width="516" FontSize="15" Foreground="#FF8F8F8F">
+            <TextBox.Effect>
+                <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFF0F0F0" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>-->
+
+
+        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0.4" VerticalAlignment="Bottom" Width="322" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" BorderBrush="{x:Null}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="ListView">
+                    <Setter Property="Background" Value="#FFFFC559"/>
+                </Style>
+            </ListView.Resources>
+        </ListView>
+        <Grid HorizontalAlignment="Left" Height="118" Margin="552,560,0,0" VerticalAlignment="Top" Width="716">
+                
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Margin="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Opacity="0.9">
+                
+            <TextBox.Effect>
+                <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7BF7A" Offset="0"/>
+                    <GradientStop Color="#FFF9F6B9" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+            </TextBox>
+        </Grid>
     </Grid>
 </Window>
