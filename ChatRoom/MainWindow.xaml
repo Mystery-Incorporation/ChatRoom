@@ -38,7 +38,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1192,603,0,0" VerticalAlignment="Top" Width="76" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8">
+        <Button x:Name="Send" HorizontalAlignment="Left" Margin="1192,603,0,0" VerticalAlignment="Top" Width="76" Height="60" Opacity="0.98" Foreground="#FF787878" FontSize="18" FontFamily="Arial" BorderThickness="3" BorderBrush="#FFE8E8E8" Click="Send_Click">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="4" ShadowDepth="4" Direction="310" Opacity="0.5"/>
             </Button.Effect>
@@ -96,24 +96,29 @@
             </ListView.Resources>
         </ListView>
         <Grid HorizontalAlignment="Left" Height="118" Margin="552,560,0,0" VerticalAlignment="Top" Width="716">
-                
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Margin="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Opacity="0.9">
-                
-            <TextBox.Effect>
-                <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
-            </TextBox.Effect>
-            <TextBox.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF7BF7A" Offset="0"/>
-                    <GradientStop Color="#FFF9F6B9" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBox.Background>
+            <TextBox x:Name="textBox1" Grid.Column="0" MaxHeight="100" TextWrapping="Wrap" Margin="5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Opacity="0.9" TextChanged="TextBox_TextChanged">
+
+                <TextBox.Effect>
+                    <DropShadowEffect Direction="287" ShadowDepth="4" Opacity="0.5"/>
+                </TextBox.Effect>
+                <TextBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF7BF7A" Offset="0"/>
+                        <GradientStop Color="#FFF9F6B9" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
             </TextBox>
         </Grid>
+        <Label x:Name="MessageLabel" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="1004,60,104,0" VerticalAlignment="Top" Height="116" Width="250" Background="White" FontSize="16" Opacity="0.95" BorderThickness="1" Visibility="Hidden">
+            <Label.Effect>
+                <DropShadowEffect Direction="290" BlurRadius="10" ShadowDepth="4" Opacity="0.9"/>
+            </Label.Effect>
+        </Label>
     </Grid>
 </Window>

@@ -65,5 +65,17 @@ namespace ChatRoom
                 listActiveChats.Items.Add(group);
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Send_Click(object sender, RoutedEventArgs e)
+        {
+            MessageLabel.Visibility = Visibility.Visible;
+            MessageLabel.Content = textBox1.Text;
+            textBox1.Clear();
+        }
     }
 }
