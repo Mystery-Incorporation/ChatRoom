@@ -27,6 +27,7 @@ namespace ChatRoom
         private static byte[] buffer = new byte[1000];
         private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static List<Socket> clientSockets = new List<Socket>();
+        public bool Clicked = false;
 
         private void ServerSetup()
         {
@@ -46,22 +47,41 @@ namespace ChatRoom
         }
         private void ReceiveCallback(IAsyncResult ar)
         {
-            Socket socket = (Socket)ar.AsyncState;
-            int received = socket.EndReceive(ar);
-            byte[] dataBuffer = new byte[received];
-            Array.Copy(buffer, dataBuffer, received);
-            string text = Encoding.UTF8.GetString(dataBuffer);
-            serverPrint("text received: " + text);
+            try
+            {
+                Socket socket = (Socket)ar.AsyncState;
+                int received = socket.EndReceive(ar);
+                byte[] dataBuffer = new byte[received];
+                Array.Copy(buffer, dataBuffer, received);
+                string text = Encoding.UTF8.GetString(dataBuffer);
+                serverPrint("text received: " + text);
 
-            byte[] data = Encoding.UTF8.GetBytes(text);
-            socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), socket);
-            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
+                if (text == "exit")
+                {   // Fick kommando att stänga ner:
+                    serverPrint("closing ... ");
+                    socket.Close(); // Stänger ner:
+                    serverPrint("OK");
+                }
+                else
+                {   // Svarar bara om det inte var en nedstängning:
+                    byte[] data = Encoding.UTF8.GetBytes(text);
+                    socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallBack), socket);
+                    socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
+                }
+            }
+            catch (Exception ex)
+            {
+                serverPrint(ex.Message.ToString());
+
+            }
         }
+
         private static void SendCallBack(IAsyncResult ar)
         {
             Socket socket = (Socket)ar.AsyncState;
             socket.EndSend(ar);
         }
+
         private async void startServer()
         {
             await Task.Run(() => ServerSetup());
@@ -78,10 +98,13 @@ namespace ChatRoom
         {
             InitializeComponent();
         }
+
         public void btn_connect_click(object sender, RoutedEventArgs e)
         {
             startServer();
+            Btn_Connect.IsEnabled = false;
         }
+
         public void btn_send_click(object sender, RoutedEventArgs e)
         {
             clientBox.Text += "\nspunk!\n";
