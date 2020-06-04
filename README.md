@@ -1,8 +1,4 @@
 # ChatRoom
-
-Noteringar för Chattprogram:
-  Chattservern:
-    Kan behöva registrera VEM det är som sänder meddelandet.
     
   Chattklienten:
     Gör inget mer på Console-programmet! Gör i stället
