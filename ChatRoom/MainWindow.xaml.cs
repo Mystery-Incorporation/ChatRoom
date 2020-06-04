@@ -101,8 +101,18 @@ namespace ChatRoom
 
         public void btn_connect_click(object sender, RoutedEventArgs e)
         {
+            
             startServer();
-            Btn_Connect.IsEnabled = false;
+            Clicked = true;
+            if(Clicked == true)
+            {
+                Btn_Connect.IsEnabled = false;
+            }
+            else
+            {
+                Clicked = false;
+                Btn_Connect.IsEnabled = true;
+            }
         }
 
         public void btn_send_click(object sender, RoutedEventArgs e)
