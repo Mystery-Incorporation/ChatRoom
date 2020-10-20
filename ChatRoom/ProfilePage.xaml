@@ -13,6 +13,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="/assets/LightThemeBackground.jpeg" ></ImageBrush>
         </Grid.Background>
+        
+        <!--Header with return button-->
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Top" Width="1366" Background="Orange">
             <Button x:Name="returnToChat" Content="Return" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="36,28,0,0" VerticalAlignment="Top" Width="140" Height="58" FontSize="22" Click="returnToChat_Click"/>
         </Grid>
@@ -32,6 +34,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
+        <!--Grid for uploaded profile image-->
         <Grid x:Name="profilePic" Height="412" Margin="954,220,124,0" VerticalAlignment="Top">
             <Border BorderBrush="Black" BorderThickness="2" Background="#FFF5D4AC"/>
             <Image x:Name="profilePicture" Margin="2,2" Stretch="UniformToFill" />
@@ -45,6 +48,5 @@
             </Button>
 
         </Grid>
-
     </Grid>
 </Page>

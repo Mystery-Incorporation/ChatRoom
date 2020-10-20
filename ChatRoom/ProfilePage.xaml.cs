@@ -36,7 +36,7 @@ namespace ChatRoom
         }
 
         /// <summary>
-        /// Returns to the declared mainwindow
+        /// Returns to the declared mainWindow
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -46,7 +46,7 @@ namespace ChatRoom
         }
 
         /// <summary>
-        /// Opens up a file dialog for the user to choose a profile picture.
+        /// Opens up a file dialog for the user to choose a profile picture
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

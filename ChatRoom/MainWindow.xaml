@@ -63,7 +63,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <!--Collapsable list-->
+        <!--Collapsible list-->
         <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0.4" VerticalAlignment="Bottom" Width="322" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" BorderBrush="{x:Null}">
             <ListView.View>
                 <GridView>

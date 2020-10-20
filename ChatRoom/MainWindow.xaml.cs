@@ -44,7 +44,7 @@ namespace ChatRoom
         }
 
         /// <summary>
-        /// Opens up the collapseable listView
+        /// Opens up the collapsible listView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
