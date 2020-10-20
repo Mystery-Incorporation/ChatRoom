@@ -22,10 +22,12 @@ namespace ChatRoom
     {
         private List<string> contacts = new List<string>() { "Anna", "Johan", "Sara", "Bertil" };
         private List<string> groups = new List<string>() { "The first group", "Amazing Group", "Fantastic Group", "The AmazeBallz" };
+        private object content;
 
         public MainWindow()
         {
             InitializeComponent();
+            content = Content;
         }
 
         private void Extra_Click(object sender, RoutedEventArgs e)
@@ -33,8 +35,19 @@ namespace ChatRoom
 
         }
 
+        /// <summary>
+        /// Declare this page as the main window
+        /// </summary>
+        public void GoToChatWindow()
+        {
+            Content = content;
+        }
 
-
+        /// <summary>
+        /// Opens up the collapseable listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void viewChats_Click(object sender, RoutedEventArgs e)
         {
             if (listActiveChats.Visibility == Visibility.Hidden)
@@ -48,6 +61,11 @@ namespace ChatRoom
             }
         }
 
+        /// <summary>
+        /// Opens up the users direct messages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DirectMessages_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
@@ -57,6 +75,11 @@ namespace ChatRoom
             }
         }
 
+        /// <summary>
+        /// Opens up the users group chats
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GroupChat_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
@@ -64,6 +87,22 @@ namespace ChatRoom
             {
                 listActiveChats.Items.Add(group);
             }
+        }
+
+        /// <summary>
+        /// Opens up the users profile page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void profile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfilePage profile = new ProfilePage(this);
+            this.Content = profile;
+        }
+
+        private void WriteMessage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

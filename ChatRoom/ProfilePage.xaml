@@ -1,0 +1,50 @@
+﻿<Page x:Class="ChatRoom.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChatRoom"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+    Title="ProfilePage">
+
+    <!--Background for window-->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/assets/LightThemeBackground.jpeg" ></ImageBrush>
+        </Grid.Background>
+        <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Top" Width="1366" Background="Orange">
+            <Button x:Name="returnToChat" Content="Return" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="36,28,0,0" VerticalAlignment="Top" Width="140" Height="58" FontSize="22" Click="returnToChat_Click"/>
+        </Grid>
+
+        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="1259" Margin="53,137,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
+            <Rectangle.Effect>
+                <BlurEffect Radius="10" RenderingBias="Quality"/>
+            </Rectangle.Effect>
+
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Orange" Offset="-0.2"/>
+                    <GradientStop Color="White" Offset="1.2"/>
+                    <GradientStop Color="#FFFFB93B" Offset="0.153"/>
+                    <GradientStop Color="#FFF3C87D" Offset="0.992"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Grid x:Name="profilePic" Height="412" Margin="954,220,124,0" VerticalAlignment="Top">
+            <Border BorderBrush="Black" BorderThickness="2" Background="#FFF5D4AC"/>
+            <Image x:Name="profilePicture" Margin="2,2" Stretch="UniformToFill" />
+            <Button x:Name="addProfilePic" Height="Auto" Margin="228,368,16,10" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="addProfilePic_Click">
+                <Button.Effect>
+                    <DropShadowEffect Opacity="0.7"/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="/assets/purpleplus.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Page>
