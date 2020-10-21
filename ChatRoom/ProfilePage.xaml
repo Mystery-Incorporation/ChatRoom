@@ -13,7 +13,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/assets/LightThemeBackground.jpeg" ></ImageBrush>
         </Grid.Background>
-        
+
         <!--Header with return button-->
         <Grid HorizontalAlignment="Left" Height="109" VerticalAlignment="Top" Width="1366" Background="Orange">
             <Button x:Name="returnToChat" Content="Return" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="36,28,0,0" VerticalAlignment="Top" Width="140" Height="58" FontSize="22" Click="returnToChat_Click"/>
@@ -48,5 +48,12 @@
             </Button>
 
         </Grid>
+        <TextBox x:Name="userNameBox" HorizontalAlignment="Left" Height="47" Margin="598,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" Background="White"/>
+        <TextBox x:Name="nameBox" HorizontalAlignment="Left" Height="48" Margin="598,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" Background="White"/>
+        <TextBox x:Name="cityBox" HorizontalAlignment="Left" Height="47" Margin="598,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" Background="White"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="598,329,0,0" VerticalAlignment="Top" Width="91" Height="31" FontSize="18"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="598,233,0,0" VerticalAlignment="Top" Width="202" Height="29" FontSize="18"/>
+        <Label Content="City" HorizontalAlignment="Left" Margin="598,431,0,0" VerticalAlignment="Top" Width="72" Height="30" FontSize="18"/>
+        <Button x:Name="Save_Button" Content="Save" HorizontalAlignment="Left" Margin="737,557,0,0" VerticalAlignment="Top" Width="75" Click="save_profile_data"/>
     </Grid>
 </Page>
