@@ -9,7 +9,7 @@ namespace ChatRoom
 {
 
     /// <summary>
-    /// Stores the data from profile pages textboxes
+    /// Encapsulated storage of user data
     /// </summary>
     public class StoredData
     {
