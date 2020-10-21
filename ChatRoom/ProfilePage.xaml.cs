@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MessageBox = System.Windows.Forms.MessageBox;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+
 
 namespace ChatRoom
 {
@@ -60,6 +62,28 @@ namespace ChatRoom
             if (pic.ShowDialog() == DialogResult.OK)
             {
                 profilePicture.Source = new BitmapImage(new Uri(pic.FileName));
+            }
+        }
+
+        /// <summary>
+        /// Button click function for storing data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void save_profile_data(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StoredData info = new StoredData();
+                info.userName = userNameBox.Text;
+                info.name = nameBox.Text;
+                info.city = cityBox.Text;
+
+                XmlFile.writeXMLFile(info, "chat_profile.xml");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
