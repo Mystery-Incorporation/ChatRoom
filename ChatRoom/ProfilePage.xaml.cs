@@ -66,7 +66,7 @@ namespace ChatRoom
         }
 
         /// <summary>
-        /// Button click function for storing data
+        /// Button click function that saves user data through a StoredData as an xml-file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
