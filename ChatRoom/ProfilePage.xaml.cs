@@ -57,11 +57,20 @@ namespace ChatRoom
             OpenFileDialog pic = new OpenFileDialog();
             pic.InitialDirectory = "c:\\";
             pic.Title = "Select your profile picture";
-            pic.Filter = "Image Files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png *.bmp)|*.jpg; *.jpeg; *.jpe; *.jfif; *.png *.bmp";
+            pic.Filter = "Image Files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png, .bmp)|.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.bmp";
 
             if (pic.ShowDialog() == DialogResult.OK)
             {
-                profilePicture.Source = new BitmapImage(new Uri(pic.FileName));
+                BitmapImage profileImage = new BitmapImage(new Uri(pic.FileName));
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(profileImage));
+
+                using (var fileStream = new System.IO.FileStream("profilePicture.bmp", System.IO.FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+
+                profilePicture.Source = profileImage;
             }
         }
 
