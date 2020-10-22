@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,15 @@ namespace ChatRoom
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            userNameBox.Text = "default username";
+            nameBox.Text = "default name";
+            cityBox.Text = "default city";
+
+            if(File.Exists("profilePicture.bmp"))
+            {
+                profilePicture.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory()+"\\"+"profilePicture.bmp"));
+            }
         }
 
         /// <summary>
