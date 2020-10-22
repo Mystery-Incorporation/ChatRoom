@@ -1,0 +1,6 @@
+G:\Git\ChatRoom\Server\ServerClassLibrary\bin\Debug\ServerClassLibrary.dll
+G:\Git\ChatRoom\Server\ServerClassLibrary\bin\Debug\ServerClassLibrary.pdb
+G:\Git\ChatRoom\Server\ServerClassLibrary\obj\Debug\ServerClassLibrary.csprojAssemblyReference.cache
+G:\Git\ChatRoom\Server\ServerClassLibrary\obj\Debug\ServerClassLibrary.csproj.CoreCompileInputs.cache
+G:\Git\ChatRoom\Server\ServerClassLibrary\obj\Debug\ServerClassLibrary.dll
+G:\Git\ChatRoom\Server\ServerClassLibrary\obj\Debug\ServerClassLibrary.pdb
