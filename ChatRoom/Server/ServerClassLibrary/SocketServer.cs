@@ -7,21 +7,26 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ServerClassLibrary
 {
-    public class SocketServer
+    public class SocketServer 
     {
         IPAddress mIP;
         int mPort;
         TcpListener mTCPListener;
+        public string userOnline;
+        TextBlock text;
 
         List<TcpClient> mClients;
         public bool KeepRunning { get; set; }
 
-        public SocketServer()
+        public SocketServer(TextBlock text)
         {
             mClients = new List<TcpClient>();
+            this.text = text;
         }
 
         public async void StartListeningForIncomingConnection(IPAddress ipaddr = null, int port = 23000)
@@ -37,9 +42,10 @@ namespace ServerClassLibrary
 
             mIP = ipaddr;
             mPort = port;
-
-            System.Diagnostics.Debug.WriteLine(string.Format("IP Adress: {0} - Port: {1}", mIP.ToString(), mPort.ToString()));
-
+            
+            
+            string woop = string.Format("IP Adress: {0} - Port: {1}", mIP.ToString(), mPort.ToString());
+            text.Text = woop;
             mTCPListener = new TcpListener(mIP, mPort);
 
             try
@@ -52,7 +58,8 @@ namespace ServerClassLibrary
                     var returnedByAccept = await mTCPListener.AcceptTcpClientAsync();
                     mClients.Add(returnedByAccept);
                     Debug.WriteLine(string.Format("Client connected successfully, count: " + returnedByAccept.Client.RemoteEndPoint));
-
+                    userOnline = mClients.Count.ToString();
+                    
                     TakeCareOfTCPClient(returnedByAccept);
                 }
             }
@@ -129,6 +136,8 @@ namespace ServerClassLibrary
             {
                 mClients.Remove(paramClient);
                 Debug.WriteLine(String.Format("Client removed, count: {0}", mClients.Count));
+                userOnline = mClients.Count.ToString();
+
             }
         }
 

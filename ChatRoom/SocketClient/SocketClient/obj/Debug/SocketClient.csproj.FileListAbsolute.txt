@@ -1,0 +1,10 @@
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\bin\Debug\SocketClient.exe.config
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\bin\Debug\SocketClient.exe
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\bin\Debug\SocketClient.pdb
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\bin\Debug\ServerClassLibrary.dll
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\bin\Debug\ServerClassLibrary.pdb
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\obj\Debug\SocketClient.csprojAssemblyReference.cache
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\obj\Debug\SocketClient.csproj.CoreCompileInputs.cache
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\obj\Debug\SocketClient.csproj.CopyComplete
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\obj\Debug\SocketClient.exe
+G:\Git\ChatRoom\ChatRoom\SocketClient\SocketClient\obj\Debug\SocketClient.pdb

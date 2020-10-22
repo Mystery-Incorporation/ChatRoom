@@ -26,7 +26,8 @@ namespace Server
         public MainWindow()
         {
             InitializeComponent();
-            mServer = new SocketServer();
+            mServer = new SocketServer(testblock);
+           
         }
 
         private void btnStartServer_Click(object sender, RoutedEventArgs e)
@@ -37,9 +38,15 @@ namespace Server
         private void btnSendAll_Click(object sender, RoutedEventArgs e)
         {
             mServer.SendToAll(txtMessage.Text.Trim());
+            
         }
 
         private void btnStopServer_Click(object sender, RoutedEventArgs e)
+        {
+            mServer.StopServer();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             mServer.StopServer();
         }
