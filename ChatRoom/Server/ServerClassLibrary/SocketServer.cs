@@ -18,15 +18,15 @@ namespace ServerClassLibrary
         int mPort;
         TcpListener mTCPListener;
         public string userOnline;
-        TextBlock text;
+        
 
         List<TcpClient> mClients;
         public bool KeepRunning { get; set; }
 
-        public SocketServer(TextBlock text)
+        public SocketServer()
         {
             mClients = new List<TcpClient>();
-            this.text = text;
+            
         }
 
         public async void StartListeningForIncomingConnection(IPAddress ipaddr = null, int port = 23000)
@@ -44,8 +44,8 @@ namespace ServerClassLibrary
             mPort = port;
             
             
-            string woop = string.Format("IP Adress: {0} - Port: {1}", mIP.ToString(), mPort.ToString());
-            text.Text = woop;
+            Debug.WriteLine(string.Format("IP Adress: {0} - Port: {1}", mIP.ToString(), mPort.ToString()));
+            
             mTCPListener = new TcpListener(mIP, mPort);
 
             try

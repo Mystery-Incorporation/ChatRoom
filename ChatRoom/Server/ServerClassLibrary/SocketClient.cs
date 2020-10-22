@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -50,6 +52,27 @@ namespace ServerClassLibrary
             return true;
         }
 
+        public async Task SendToServer(string strInputUser)
+        {
+            if (string.IsNullOrEmpty(strInputUser))
+            {
+                Console.WriteLine("Empty string supplied to send.");
+                return;
+            }
+            if (mClient != null)
+            {
+                if (mClient.Connected)
+                {
+                    StreamWriter clientStreamWriter = new StreamWriter(mClient.GetStream());
+                    clientStreamWriter.AutoFlush = true;
+
+                    await clientStreamWriter.WriteLineAsync(strInputUser);
+                    Console.WriteLine("Data sent...");
+
+                }
+            }
+        }
+
         public bool SetPortNumber(string _ServerPort)
         {
             int portNumber = 0;
@@ -80,6 +103,8 @@ namespace ServerClassLibrary
             {
                 await mClient.ConnectAsync(mServerIPAddress, mServerPort);
                 Console.WriteLine(string.Format("Connected to server IP/Port: {0} / {1}", mServerIPAddress, mServerPort));
+
+                ReadDataAsync(mClient);
             }
             catch (Exception excp)
             {
@@ -88,5 +113,34 @@ namespace ServerClassLibrary
             }
         }
 
+        private async Task ReadDataAsync(TcpClient mClient)
+        {
+            try
+            {
+                StreamReader clientStreamReader = new StreamReader(mClient.GetStream());
+                char[] buff = new char[64];
+                int readByteCount = 0;
+
+                while (true)
+                {
+                    readByteCount = await clientStreamReader.ReadAsync(buff, 0, buff.Length);
+
+                    if(readByteCount <= 0)
+                    {
+                        Console.WriteLine("Disconnected from server. ");
+                        mClient.Close();
+                        break;
+                    }
+                }
+                Console.WriteLine(string.Format("Receivd bytes: {0} - Message: {1}", readByteCount, new string(buff)));
+
+                Array.Clear(buff, 0, buff.Length);
+            }
+            catch (Exception excp)
+            {
+                Console.WriteLine(excp.ToString());
+                throw;
+            }
+        }
     }
 }

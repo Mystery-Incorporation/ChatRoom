@@ -26,7 +26,7 @@ namespace Server
         public MainWindow()
         {
             InitializeComponent();
-            mServer = new SocketServer(testblock);
+            mServer = new SocketServer();
            
         }
 
