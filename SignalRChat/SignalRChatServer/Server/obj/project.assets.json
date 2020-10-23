@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatServer\\Server\\Server.csproj",
+      "projectUniqueName": "D:\\ChatRoom\\SignalRChat\\SignalRChatServer\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatServer\\Server\\Server.csproj",
+      "projectPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatServer\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatServer\\Server\\obj\\",
+      "outputPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatServer\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

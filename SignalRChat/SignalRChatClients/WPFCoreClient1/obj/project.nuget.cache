@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ssWVkIv5FYaIacUH2ycND2tnUUWlK/Vcb1/IDA1qwS0Y0iuQbeqxm/uTn18FcoxfL2MgFq0lBLL8xFdcK84rVw==",
+  "dgSpecHash": "VEkUaukqOj4sC/8B+1XS3pQcHrOhBN4XrGjFS+feJrJLdHXP/hNbt7OjksEinM71jsVJsv9+xzuqZzGNp7NJMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
+  "projectFilePath": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.1.9\\microsoft.aspnetcore.connections.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\3.1.9\\microsoft.aspnetcore.http.connections.client.3.1.9.nupkg.sha512",

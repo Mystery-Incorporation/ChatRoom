@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj": {}
+    "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj": {
+    "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj",
+        "projectUniqueName": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj",
         "projectName": "WpfCoreClient2",
-        "projectPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj",
+        "projectPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WpfCoreClient2\\WpfCoreClient2.csproj",
         "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WpfCoreClient2\\obj\\",
+        "outputPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WpfCoreClient2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

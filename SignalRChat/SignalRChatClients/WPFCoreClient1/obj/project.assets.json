@@ -577,11 +577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
+      "projectUniqueName": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
       "projectName": "WPFCoreClient1",
-      "projectPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
+      "projectPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WPFCoreClient1\\WPFCoreClient1.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Leo\\source\\repos\\SignalRChatFolder\\SignalRChatClients\\WPFCoreClient1\\obj\\",
+      "outputPath": "D:\\ChatRoom\\SignalRChat\\SignalRChatClients\\WPFCoreClient1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
