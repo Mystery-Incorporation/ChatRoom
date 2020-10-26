@@ -13,9 +13,17 @@ namespace ChatRoom
     /// </summary>
     public class StoredData
     {
-        public string _userNameBox;
-        public string _nameBox;
-        public string _cityBox;
+        private string _userNameBox;
+        private string _nameBox;
+        private string _cityBox;
+
+        //public StoredData() { }
+        //public StoredData(StoredData readXmlData)
+        //{
+        //    userName = readXmlData.userName;
+        //    name = readXmlData.name;
+        //    city = readXmlData.city;
+        //}
 
         public string userName
         {
@@ -25,7 +33,7 @@ namespace ChatRoom
 
         public string name
         {
-            get { return _userNameBox; }
+            get { return _nameBox; }
             set { _nameBox = value; }
         }
 

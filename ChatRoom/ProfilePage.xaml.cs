@@ -37,13 +37,26 @@ namespace ChatRoom
             InitializeComponent();
             this.mainWindow = mainWindow;
 
-            userNameBox.Text = "default username";
-            nameBox.Text = "default name";
-            cityBox.Text = "default city";
+            if (File.Exists("chat_profile.xml"))
+            {
+                StoredData info = XmlFile.readXMLFile(new StoredData(), Directory.GetCurrentDirectory() + "\\" + "chat_profile.xml");
+                
+                userNameBox.Text = info.userName;
+                nameBox.Text = info.name;
+                cityBox.Text = info.city;
+            }
 
             if(File.Exists("profilePicture.bmp"))
             {
-                profilePicture.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory()+"\\"+"profilePicture.bmp"));
+                //BitmapImage picsource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
+                profilePicture.Source = BitmapFrame.Create(
+                    new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"),
+                    BitmapCreateOptions.None,
+                    BitmapCacheOption.OnLoad);
+                
+                //picsource;// new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
+                    //new ImageSourceConverter().ConvertFromString(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp") as ImageSource;
+                //new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
             }
         }
 
