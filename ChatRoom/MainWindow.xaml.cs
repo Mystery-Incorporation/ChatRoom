@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.AspNetCore.SignalR.Client;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,11 +24,22 @@ namespace ChatRoom
         private List<string> contacts = new List<string>() { "Anna", "Johan", "Sara", "Bertil" };
         private List<string> groups = new List<string>() { "The first group", "Amazing Group", "Fantastic Group", "The AmazeBallz" };
         private object content;
+        public HubConnection Connection { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             content = Content;
+
+            Connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:55427/chathub")
+                .Build();
+
+            Connection.Closed += async (error) =>
+            {
+                await Task.Delay(new Random().Next(0, 5) * 1000);
+                await Connection.StartAsync();
+            };
         }
 
         private void Extra_Click(object sender, RoutedEventArgs e)
@@ -103,6 +115,43 @@ namespace ChatRoom
         private void WriteMessage_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private async void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await Connection.InvokeAsync("SendMessage",
+                    "Legion", WriteMessage.Text);
+            }
+            catch (Exception ex)
+            {
+                ChatHistory.Items.Add(ex.Message);
+            }
+        }
+
+        private async void OnWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            Connection.On<string, string>("ReceiveMessage", (user, message) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    var newMessage = $"{user}: {message}";
+                    ChatHistory.Items.Add(newMessage);
+                });
+            });
+
+            try
+            {
+                await Connection.StartAsync();
+                ConnectionStatus.Text = "Online";
+                //ConnectButton.IsEnabled = false;
+                SendButton.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                ChatHistory.Items.Add(ex.Message);
+            }
         }
     }
 }
