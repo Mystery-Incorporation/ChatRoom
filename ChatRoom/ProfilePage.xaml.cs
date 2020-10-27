@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,28 @@ namespace ChatRoom
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+
+            if (File.Exists("chat_profile.xml"))
+            {
+                StoredData info = XmlFile.readXMLFile(new StoredData(), Directory.GetCurrentDirectory() + "\\" + "chat_profile.xml");
+                
+                userNameBox.Text = info.userName;
+                nameBox.Text = info.name;
+                cityBox.Text = info.city;
+            }
+
+            if(File.Exists("profilePicture.bmp"))
+            {
+                //BitmapImage picsource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
+                profilePicture.Source = BitmapFrame.Create(
+                    new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"),
+                    BitmapCreateOptions.None,
+                    BitmapCacheOption.OnLoad);
+                
+                //picsource;// new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
+                    //new ImageSourceConverter().ConvertFromString(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp") as ImageSource;
+                //new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\" + "profilePicture.bmp"));//,UriKind.Relative));
+            }
         }
 
         /// <summary>
@@ -57,11 +80,20 @@ namespace ChatRoom
             OpenFileDialog pic = new OpenFileDialog();
             pic.InitialDirectory = "c:\\";
             pic.Title = "Select your profile picture";
-            pic.Filter = "Image Files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png *.bmp)|*.jpg; *.jpeg; *.jpe; *.jfif; *.png *.bmp";
+            pic.Filter = "Image Files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png, .bmp)|.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.bmp";
 
             if (pic.ShowDialog() == DialogResult.OK)
             {
-                profilePicture.Source = new BitmapImage(new Uri(pic.FileName));
+                BitmapImage profileImage = new BitmapImage(new Uri(pic.FileName));
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(profileImage));
+
+                using (var fileStream = new System.IO.FileStream("profilePicture.bmp", System.IO.FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+
+                profilePicture.Source = profileImage;
             }
         }
 
