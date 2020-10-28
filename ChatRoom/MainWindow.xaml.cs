@@ -43,11 +43,6 @@ namespace ChatRoom
             };
         }
 
-        private void Extra_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Declare this page as the main window
         /// </summary>
@@ -82,7 +77,7 @@ namespace ChatRoom
         private void DirectMessages_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
-            foreach(string contact in contacts)
+            foreach (string contact in contacts)
             {
                 listActiveChats.Items.Add(contact);
             }
@@ -96,7 +91,7 @@ namespace ChatRoom
         private void GroupChat_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
-            foreach(string group in groups)
+            foreach (string group in groups)
             {
                 listActiveChats.Items.Add(group);
             }
@@ -113,17 +108,11 @@ namespace ChatRoom
             this.Content = profile;
         }
 
-        private void WriteMessage_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
-                String userName = "Legion";
+                String userName = "TempUser";
                 if (File.Exists("chat_profile.xml"))
                 {
                     userName = XmlFile.readXMLFile(new StoredData(), Directory.GetCurrentDirectory() + @"\" + "chat_profile.xml").userName;
@@ -134,6 +123,7 @@ namespace ChatRoom
             {
                 ChatHistory.Items.Add(ex.Message);
             }
+            WriteMessage.Clear();
         }
 
         private async void OnWindowLoaded(object sender, RoutedEventArgs e)

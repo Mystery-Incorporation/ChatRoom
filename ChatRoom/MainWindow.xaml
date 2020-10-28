@@ -49,7 +49,7 @@
 
         <!--Side list-->
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.RowSpan="4" Background="Orange">
-            <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="10,18,10,8" Click="profile_Click"/>
+            <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="10,16,10,8" Click="profile_Click"/>
             <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="8" Click="DirectMessages_Click"/>
             <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="8" Click="GroupChat_Click"/>
             <Button x:Name="viewChats" Width="20" Height="88" Margin="0,40" VerticalAlignment="Center" HorizontalAlignment="Right" Click="viewChats_Click"/>
@@ -125,8 +125,7 @@
                      Grid.Column="0" 
                      TextWrapping="Wrap" 
                      AcceptsReturn="True" 
-                     VerticalScrollBarVisibility="Auto" 
-                     TextChanged="WriteMessage_TextChanged" 
+                     VerticalScrollBarVisibility="Auto"
                      Background="White">
                 <!--<TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
