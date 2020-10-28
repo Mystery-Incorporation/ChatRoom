@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ChatRoom
 {
@@ -119,10 +120,15 @@ namespace ChatRoom
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
-                await Connection.InvokeAsync("SendMessage",
-                    "Legion", WriteMessage.Text);
+                String userName = "Legion";
+                if (File.Exists("chat_profile.xml"))
+                {
+                    userName = XmlFile.readXMLFile(new StoredData(), Directory.GetCurrentDirectory() + @"\" + "chat_profile.xml").userName;
+                }
+                await Connection.InvokeAsync("SendMessage", userName, WriteMessage.Text);
             }
             catch (Exception ex)
             {
@@ -145,7 +151,6 @@ namespace ChatRoom
             {
                 await Connection.StartAsync();
                 ConnectionStatus.Text = "Online";
-                //ConnectButton.IsEnabled = false;
                 SendButton.IsEnabled = true;
             }
             catch (Exception ex)

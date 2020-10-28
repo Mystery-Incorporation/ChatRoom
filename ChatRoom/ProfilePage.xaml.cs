@@ -27,7 +27,6 @@ namespace ChatRoom
     public partial class ProfilePage : Page
     {
         private MainWindow mainWindow;
-
         /// <summary>
         /// Sets this page as the temporarly main window
         /// </summary>
