@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ChatRoom
 {
-
     /// <summary>
     /// Encapsulated storage of user data
     /// </summary>
