@@ -42,6 +42,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        
         <!--Set background for window-->
         <Grid.Background>
             <ImageBrush ImageSource="/assets/LightThemeBackground.jpeg" Opacity="0.8"/>
@@ -92,7 +93,8 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-
+        
+        <!--Listbox for displaying message history-->
         <Border BorderBrush="White" 
                 BorderThickness="10" 
                 CornerRadius="10"
@@ -145,18 +147,5 @@
                     Height="60" Width="80"
                     Margin="20,2,0,2"/>
         </Grid>
-
-        <!--<Border.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="#FFFFEF82" Offset="1"/>
-                    <GradientStop Color="#FFFDF4BC" Offset="0.187"/>
-                    <GradientStop Color="#FFF9EC98" Offset="0.6"/>
-                </LinearGradientBrush>
-            </Border.Background>-->
-
-        <!--<StackPanel>
-                    <Image Source="/assets/arrow.png" Height="42" Width="50">
-                    </Image>
-                </StackPanel>-->
     </Grid>
 </Window>
