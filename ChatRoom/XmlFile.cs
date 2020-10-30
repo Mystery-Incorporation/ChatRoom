@@ -13,6 +13,11 @@ namespace ChatRoom
     /// </summary>
     class XmlFile
     {
+        /// <summary>
+        /// Writes file conten to xml file.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="filename"></param>
         public static void writeXMLFile (object obj, string filename)
         {
             XmlSerializer sr = new XmlSerializer(obj.GetType());
@@ -20,6 +25,13 @@ namespace ChatRoom
             sr.Serialize(writer, obj);
             writer.Close();  
         }
+
+        /// <summary>
+        /// Reads a specified post in a xml file.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public static StoredData readXMLFile(object obj, string filename)
         {
             XmlSerializer sr = new XmlSerializer(obj.GetType());
@@ -27,30 +39,6 @@ namespace ChatRoom
             StoredData data = (StoredData)sr.Deserialize(reader);
             reader.Close();
             return data;
-            //FileStream fs = new FileStream(filename, FileMode.Open);
-            //XmlReader reader = XmlReader.Create(fs);
-            //contents i;
-            //i = (contents)serializer.Deserialize(reader);
-            //fs.Close();
         }
     }
 }
-//[XmlRoot(ElementName = "section")]
-//public class Section
-//{
-//    [XmlElement(ElementName = "element1")]
-//    public string Element1 { get; set; }
-//    [XmlElement(ElementName = "element2")]
-//    public string Element2 { get; set; }
-//    [XmlElement(ElementName = "idx")]
-//    public List<string> Idx { get; set; }
-//    [XmlAttribute(AttributeName = "id")]
-//    public string Id { get; set; }
-//}
-
-//[XmlRoot(ElementName = "contents")]
-//public class Contents
-//{
-//    [XmlElement(ElementName = "section")]
-//    public List<Section> Section { get; set; }
-//}

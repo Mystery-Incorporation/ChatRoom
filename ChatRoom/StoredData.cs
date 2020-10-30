@@ -17,14 +17,6 @@ namespace ChatRoom
         private string _nameBox;
         private string _cityBox;
 
-        //public StoredData() { }
-        //public StoredData(StoredData readXmlData)
-        //{
-        //    userName = readXmlData.userName;
-        //    name = readXmlData.name;
-        //    city = readXmlData.city;
-        //}
-
         public string userName
         {
             get { return _userNameBox; }

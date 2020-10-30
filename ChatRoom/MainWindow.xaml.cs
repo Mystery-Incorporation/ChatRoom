@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Microsoft.AspNetCore.SignalR.Client;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 
 namespace ChatRoom
@@ -32,6 +22,14 @@ namespace ChatRoom
             InitializeComponent();
             content = Content;
 
+            ConnectToHub();
+        }
+
+        /// <summary>
+        /// Connects to hub and if it fails tries to reconnect at a certain interval.
+        /// </summary>
+        private void ConnectToHub()
+        {
             Connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:55427/chathub")
                 .Build();
@@ -108,6 +106,11 @@ namespace ChatRoom
             this.Content = profile;
         }
 
+        /// <summary>
+        /// Send username and message string via connection to server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -126,6 +129,11 @@ namespace ChatRoom
             WriteMessage.Clear();
         }
 
+        /// <summary>
+        /// When window loads the connection subscribes to the specified method on the SignalR Hub.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             Connection.On<string, string>("ReceiveMessage", (user, message) =>
