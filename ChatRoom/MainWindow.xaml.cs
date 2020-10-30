@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.AspNetCore.SignalR.Client;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ChatRoom
 {
@@ -23,16 +25,22 @@ namespace ChatRoom
         private List<string> contacts = new List<string>() { "Anna", "Johan", "Sara", "Bertil" };
         private List<string> groups = new List<string>() { "The first group", "Amazing Group", "Fantastic Group", "The AmazeBallz" };
         private object content;
+        public HubConnection Connection { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             content = Content;
-        }
 
-        private void Extra_Click(object sender, RoutedEventArgs e)
-        {
+            Connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:55427/chathub")
+                .Build();
 
+            Connection.Closed += async (error) =>
+            {
+                await Task.Delay(new Random().Next(0, 5) * 1000);
+                await Connection.StartAsync();
+            };
         }
 
         /// <summary>
@@ -69,7 +77,7 @@ namespace ChatRoom
         private void DirectMessages_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
-            foreach(string contact in contacts)
+            foreach (string contact in contacts)
             {
                 listActiveChats.Items.Add(contact);
             }
@@ -83,7 +91,7 @@ namespace ChatRoom
         private void GroupChat_Click(object sender, RoutedEventArgs e)
         {
             listActiveChats.Items.Clear();
-            foreach(string group in groups)
+            foreach (string group in groups)
             {
                 listActiveChats.Items.Add(group);
             }
@@ -100,9 +108,45 @@ namespace ChatRoom
             this.Content = profile;
         }
 
-        private void WriteMessage_TextChanged(object sender, TextChangedEventArgs e)
+        private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                String userName = "TempUser";
+                if (File.Exists("chat_profile.xml"))
+                {
+                    userName = XmlFile.readXMLFile(new StoredData(), Directory.GetCurrentDirectory() + @"\" + "chat_profile.xml").userName;
+                }
+                await Connection.InvokeAsync("SendMessage", userName, WriteMessage.Text);
+            }
+            catch (Exception ex)
+            {
+                ChatHistory.Items.Add(ex.Message);
+            }
+            WriteMessage.Clear();
+        }
 
+        private async void OnWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            Connection.On<string, string>("ReceiveMessage", (user, message) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    var newMessage = $"{user}: {message}";
+                    ChatHistory.Items.Add(newMessage);
+                });
+            });
+
+            try
+            {
+                await Connection.StartAsync();
+                ConnectionStatus.Text = "Online";
+                SendButton.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                ChatHistory.Items.Add(ex.Message);
+            }
         }
     }
 }

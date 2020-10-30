@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ChatRoom"
         mc:Ignorable="d"
-        Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen">
+        Title="Chat Room" Height="768" Width="1366" WindowStartupLocation="CenterScreen" Loaded="OnWindowLoaded">
 
     <!--Template code for making round corners for textbox-->
     <Window.Resources>
@@ -30,25 +30,55 @@
         </ControlTemplate>
     </Window.Resources>
 
-
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <!--Set background for window-->
         <Grid.Background>
             <ImageBrush ImageSource="/assets/LightThemeBackground.jpeg" Opacity="0.8"/>
         </Grid.Background>
-        
-        <!--Side list-->
-        <Grid HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="142" Background="Orange">
-            <Border BorderThickness="1" CornerRadius="5" >
-                <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="profile_Click"/>
-            </Border>
-            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,104,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="DirectMessages_Click"/>
-            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Left" Margin="26,196,0,0" VerticalAlignment="Top" Width="86" Height="70" Click="GroupChat_Click"/>
-            <Button x:Name="viewChats" HorizontalAlignment="Right" Margin="0,320,0,317" VerticalAlignment="Center" Width="20" Height="88" Click="viewChats_Click"/>
-        </Grid>
 
-<!--Chat window design-->
-        <Rectangle x:Name="ChatBackground" HorizontalAlignment="Left" Height="683" VerticalAlignment="Top" Width="845" Margin="489,25,0,0" RadiusX="69.5" RadiusY="69.5" Stroke="#FFCDCDCD" StrokeStartLineCap="Round" Opacity="0.5">
+        <!--Side list-->
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.RowSpan="4" Background="Orange">
+            <Button x:Name="profile" Content="Profile" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="10,16,10,8" Click="profile_Click"/>
+            <Button x:Name="directMessages" Content="Direct Messages" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="8" Click="DirectMessages_Click"/>
+            <Button x:Name="groupChat" Content="Group" Background="#FFCB9FF0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="70" Margin="8" Click="GroupChat_Click"/>
+            <Button x:Name="viewChats" Width="20" Height="88" Margin="0,40" VerticalAlignment="Center" HorizontalAlignment="Right" Click="viewChats_Click"/>
+        </StackPanel>
+
+        <TextBlock x:Name="ConnectionStatus" VerticalAlignment="Bottom" Background="#FFCB9FF0" Height="25" Width="106" HorizontalAlignment="Left" Grid.Row="4"/>
+        
+        <!--Collapsible list-->
+        <ListView x:Name="listActiveChats" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" Grid.Column="1" Grid.RowSpan="4" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="ListView">
+                    <Setter Property="Background" Value="#FFFFC559"/>
+                </Style>
+            </ListView.Resources>
+        </ListView>
+        
+        <!--Chat window design-->
+        <Rectangle x:Name="ChatBackground" 
+                   RadiusX="69.5" RadiusY="69.5" 
+                   Stroke="#FFCDCDCD" 
+                   StrokeStartLineCap="Round" 
+                   Opacity="0.4" 
+                   Grid.Column="2" 
+                   Grid.RowSpan="4" >
             <Rectangle.Effect>
                 <BlurEffect Radius="10" RenderingBias="Quality"/>
             </Rectangle.Effect>
@@ -63,53 +93,70 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <!--Collapsible list-->
-        <ListView x:Name="listActiveChats" HorizontalAlignment="Left" Height="737" Margin="142,0,0,0.4" VerticalAlignment="Bottom" Width="322" Visibility="Hidden" Opacity="0.7" Background="#FFFFC559" BorderBrush="{x:Null}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <ListView.Resources>
-                <Style TargetType="ListView">
-                    <Setter Property="Background" Value="#FFFFC559"/>
-                </Style>
-            </ListView.Resources>
-        </ListView>
+        <Border BorderBrush="White" 
+                BorderThickness="10" 
+                CornerRadius="10"
+                Margin="20"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="2">
+            <ListBox
+            Background="White"
+            x:Name="ChatHistory">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                    Text="{Binding}"
+                    TextWrapping="Wrap" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
 
-        <!--TextBox for writing message-->
-        <Grid HorizontalAlignment="Left" Height="130" Margin="552,560,0,0" VerticalAlignment="Top" Width="652">
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="WriteMessage" Grid.Column="0" Height="120" MaxHeight="120" TextWrapping="Wrap" Margin="5,5,0,5" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" BorderBrush="{x:Null}" Grid.ColumnSpan="2" TextChanged="WriteMessage_TextChanged">
-                <TextBox.Background>
+        <Grid Grid.Column="2" Grid.Row="3" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--TextBox for writing message-->
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" 
+                     x:Name="WriteMessage" 
+                     Grid.Column="0" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto"
+                     Background="White">
+                <!--<TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="#FFFFEF82" Offset="1"/>
                         <GradientStop Color="#FFFDF4BC" Offset="0.187"/>
                         <GradientStop Color="#FFF9EC98" Offset="0.6"/>
                     </LinearGradientBrush>
-                </TextBox.Background>
+                </TextBox.Background>-->
             </TextBox>
+
+            <!--Send Button-->
+            <Button x:Name="SendButton" 
+                    Background="#FFCB9FF0" 
+                    Content="Send" 
+                    Click="SendButton_Click" 
+                    Grid.Column="1" 
+                    Height="60" Width="80"
+                    Margin="20,2,0,2"/>
         </Grid>
 
-        <!--Send Button-->
-        <Border BorderThickness="1" Margin="1209,581,67,67" CornerRadius="5">
-            <Border.Background>
+        <!--<Border.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="#FFFFEF82" Offset="1"/>
                     <GradientStop Color="#FFFDF4BC" Offset="0.187"/>
                     <GradientStop Color="#FFF9EC98" Offset="0.6"/>
                 </LinearGradientBrush>
-            </Border.Background>
-            <Button  x:Name="Send" Content="Send" HorizontalAlignment="Left" Margin="1209,575,0,0" SnapsToDevicePixels="True" VerticalAlignment="Top" Width="76" Height="65" FontSize="18" FontFamily="Arial" BorderThickness="0" BorderBrush="{x:Null}" ClipToBounds="True" Foreground="{x:Null}" >
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-                <!--<StackPanel>
+            </Border.Background>-->
+
+        <!--<StackPanel>
                     <Image Source="/assets/arrow.png" Height="42" Width="50">
                     </Image>
                 </StackPanel>-->
-            </Button>
-        </Border>
     </Grid>
 </Window>
