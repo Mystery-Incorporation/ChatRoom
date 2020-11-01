@@ -31,7 +31,7 @@ namespace ChatRoom
         private void ConnectToHub()
         {
             Connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:55427/chathub")
+                .WithUrl("http://localhost:50660/chatroomhub")
                 .Build();
 
             Connection.Closed += async (error) =>
